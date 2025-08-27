@@ -1,0 +1,15 @@
+[options]
+mode cover
+depth 1000
+
+[engines]
+smtbmc
+
+[script]
+read -formal frequency_counter.v edge_detect.v seven_segment.v
+prep -top frequency_counter
+
+[files]
+edge_detect.v
+frequency_counter.v
+seven_segment.v

@@ -1,0 +1,7 @@
+# running in freq/src/
+read -formal frequency_counter.v edge_detect.v seven_segment.v
+prep -top frequency_counter
+
+hierarchy -smtcheck
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il
