@@ -1,3 +1,6 @@
+# docs: https://docs.icebreaker-fpga.org/hardware/icebreaker/
+# this setup for the digilent PMOD plugged into bottom row 
+# with signal in first pin of top row of PMOD1A
 # 12 MHz clock
 set_io -nowarn clk        35
 
@@ -24,14 +27,14 @@ set_io -nowarn FLASH_IO2  12
 set_io -nowarn FLASH_IO3  13
 
 # segments
-set_io -nowarn segments_n[0]  4
-set_io -nowarn segments_n[1]  2
-set_io -nowarn segments_n[2]  47
-set_io -nowarn segments_n[3]  45
-set_io -nowarn segments_n[4]  3
-set_io -nowarn segments_n[5]  48
-set_io -nowarn segments_n[6]  46
-set_io -nowarn digit_n        44
+set_io -nowarn segments[0]  3
+set_io -nowarn segments[1]  48
+set_io -nowarn segments[2]  46
+set_io -nowarn segments[3]  44
+set_io -nowarn segments[4]  42
+set_io -nowarn segments[5]  36
+set_io -nowarn segments[6]  32
+set_io -nowarn digit      28
 
 # PMOD 1A
 set_io -nowarn P1A1        4
@@ -53,7 +56,7 @@ set_io -nowarn P1B8       36
 set_io -nowarn P1B9       32
 set_io -nowarn P1B10      28
 
-set_io -nowarn signal     26
+set_io -nowarn signal     4
 
 # PMOD 2
 set_io -nowarn P2_1       27

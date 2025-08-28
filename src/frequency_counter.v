@@ -9,16 +9,8 @@ module frequency_counter #(
     input wire              reset_n,
     input wire              signal,
 
-    input wire [BITS-1:0]   period,
-    input wire              period_load,
-
     output wire [6:0]       segments,
-    output wire             digit,
-
-    // some debug wires
-    output wire [1:0]       dbg_state,      // state machine
-    output wire [2:0]       dbg_clk_count,  // top 3 bits of clk counter
-    output wire [2:0]       dbg_edge_count  // top 3 bits of edge counter
+    output wire             digit
     );
 
     wire reset = ! reset_n;
@@ -38,8 +30,6 @@ module frequency_counter #(
     always @(posedge clk) begin
         if(reset)
             update_period   <= UPDATE_PERIOD;
-        else if(period_load)
-            update_period   <= period;
     end
 
     localparam STATE_COUNT  = 0;
@@ -48,11 +38,6 @@ module frequency_counter #(
 
     reg [1:0] state;
     
-    // debug assigns
-    assign dbg_state = state;
-    assign dbg_clk_count = clk_counter[BITS-1:BITS-3];
-    assign dbg_edge_count = edge_counter[6:4];
-
     always @(posedge clk) begin
         if(reset) begin
 
