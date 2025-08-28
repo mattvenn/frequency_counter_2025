@@ -6,7 +6,7 @@ module frequency_counter #(
     parameter BITS = 12
 )(
     input wire              clk,
-    input wire              reset,
+    input wire              reset_n,
     input wire              signal,
 
     input wire [BITS-1:0]   period,
@@ -21,6 +21,7 @@ module frequency_counter #(
     output wire [2:0]       dbg_edge_count  // top 3 bits of edge counter
     );
 
+    wire reset = ! reset_n;
 
     reg [BITS-1:0] update_period;   // measure incoming signal edges for this period
 
