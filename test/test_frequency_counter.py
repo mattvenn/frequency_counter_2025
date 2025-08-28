@@ -9,10 +9,10 @@ if "NOASSERT" in os.environ:
     ASSERT = False
 
 async def reset(dut):
-    dut.reset.value = 1
+    dut.reset_n.value = 0
     dut.period_load.value = 0
     await ClockCycles(dut.clk, 5)
-    dut.reset.value = 0;
+    dut.reset_n.value = 1;
     await ClockCycles(dut.clk, 5)
 
 async def update_period(dut, period):
