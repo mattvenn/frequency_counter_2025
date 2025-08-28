@@ -71,7 +71,7 @@ module frequency_counter #(
                     if(leading_edge_detect)
                         edge_counter <= edge_counter + 1'b1;
 
-                    if(clk_counter >= update_period) begin
+                    if(clk_counter == update_period) begin
                         clk_counter <= 0;
                         ten_count   <= 0;
                         unit_count  <= 0;
