@@ -54,8 +54,10 @@ async def test_all(dut):
 
         # give it 4 update periods to allow counters to adjust
         await ClockCycles(dut.clk, period * 4)
+        measured_freq = await read_segments(dut)
+        dut._log.info(f"measured frequency {measured_freq} kHz")
         if ASSERT:
-            assert await read_segments(dut) == input_freq
+            assert measured_freq == input_freq
 
         # kill signal
         input_signal.kill()
